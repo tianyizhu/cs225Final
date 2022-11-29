@@ -1,7 +1,5 @@
 #include <string>
 #include <vector>
-#include "graph.hpp"
-#include "geo.hpp"
 
 using namespace std;
 
@@ -11,7 +9,6 @@ struct Route{
     int stop;
     string plane;
 };
-
 
 
 struct Airport{
@@ -24,9 +21,5 @@ struct Airport{
 };
 
 
-int main() {
-    vector<Airport> airports;
-    vector<Route> routes;
-    return 0;
-}
+void read_dat(string filename, vector<Airport>& airports, vector<Route>& routes);
 
