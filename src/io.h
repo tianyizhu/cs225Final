@@ -8,6 +8,7 @@ struct Route{
     int des;
     int stop;
     string plane;
+    string airline; 
 };
 
 
@@ -15,7 +16,7 @@ struct Airport{
     string name;
     string city;
     string country;
-    string code;    //三位IATA
+    string iata;    //三位IATA
     float la;       //纬度
     float lo;
 };
@@ -23,3 +24,6 @@ struct Airport{
 
 void read_dat(string filename, vector<Airport>& airports, vector<Route>& routes);
 
+bool is_airport_iata(string s);  //check if three upcase letters.
+
+bool is_number(string s);

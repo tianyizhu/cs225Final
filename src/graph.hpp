@@ -20,6 +20,11 @@ class graph {
         return adjList[s].find(d) != adjList[s].end();
     }
 
+    float get_dis(unsigned s, unsigned d)   const{
+        if (!is_adj(s,d)) return -1;
+        return adjList[s][d];
+    }
+
     bool add_edge(unsigned s, unsigned d, float dis=1)    {
 
         unsigned size = max(s,d);
@@ -59,8 +64,15 @@ class graph {
         return ret.size();
     }
 
-    void print_graph() {
-        for (unsigned i=0; i<adjList.size(); i++)    {
+    void print_graph(unsigned from = 0, unsigned to = -1) {
+
+        // to--;
+
+        if (to<from || to > adjList.size())
+            to = adjList.size()-1;
+        
+
+        for (unsigned i=0; i<=to; i++)    {
             
             cout<<"("<<i<<"):  ";
 
@@ -71,6 +83,8 @@ class graph {
 
             cout<<endl;
         }
+        
+        cout<<endl;
     }
 
     bool remove_edge(unsigned s, unsigned d)  {
