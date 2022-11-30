@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <vector>
 
@@ -22,8 +24,11 @@ struct Airport{
 };
 
 
-void read_dat(string filename, vector<Airport>& airports, vector<Route>& routes);
+void read_airports_dat(const string filename, vector<Airport>& airports);
+void read_routes_dat(const string filename, vector<Route>& routes);
 
 bool is_airport_iata(string s);  //check if three upcase letters.
 
 bool is_number(string s);
+
+int SplitString(const std::string & str1, char sep, std::vector<std::string> &fields);

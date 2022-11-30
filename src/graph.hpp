@@ -1,17 +1,21 @@
 #pragma once
 
+#define NULLV 10000
+
 #include <vector>
 #include <map>
 #include <unordered_map>
 #include <iostream>
 #include <algorithm>
+#include <queue>
+#include "io.h"
 using namespace std;
 
-class graph {
+class Graph {
 
     public:
     
-    std::vector<std::map<int, float>> adjList;
+    std::vector<std::map<unsigned, float>> adjList;
 
     bool is_adj(unsigned s, unsigned d)   const{
         if (s>=adjList.size() || d>=adjList.size())
@@ -20,9 +24,10 @@ class graph {
         return adjList[s].find(d) != adjList[s].end();
     }
 
-    float get_dis(unsigned s, unsigned d)   const{
+    float get_dis(unsigned s, unsigned d)   {
         if (!is_adj(s,d)) return -1;
-        return adjList[s][d];
+        float ret = adjList[s][d];
+        return ret;
     }
 
     bool add_edge(unsigned s, unsigned d, float dis=1)    {
@@ -72,7 +77,7 @@ class graph {
             to = adjList.size()-1;
         
 
-        for (unsigned i=0; i<=to; i++)    {
+        for (unsigned i=from; i<=to; i++)    {
             
             cout<<"("<<i<<"):  ";
 
@@ -102,3 +107,82 @@ class graph {
         if (v>=adjList.size()) adjList.resize(v+1);
     }
 };
+
+
+
+class cmp
+{
+//   bool reverse;
+    
+    public:
+
+//   mycomparison(const bool& revparam=false)
+//     {reverse=revparam;}
+  bool operator() (pair<unsigned,float> a, pair<unsigned,float> b) const
+  {
+      return a.second < b.second;
+  }
+};
+
+// bool cmp(pair<unsigned,float> a, pair<unsigned,float> b) {
+//     return a.second < b.second;
+// }
+
+void dij(Graph g, unsigned src, unsigned des, vector<Airport>& airports)    {
+
+    priority_queue<pair<unsigned,float>, vector<pair<unsigned,float>>, cmp> pq;
+
+    pq.push( make_pair(src, 0) );
+
+    float d[14110];
+    int p[14110];
+    bool visited[14110];
+
+    for (int i=0; i<14111; i++) {
+        d[i] = 1000000;
+        visited[i] = false;
+        p[i] = NULLV;
+    }
+
+    d[src] = 0;
+    // visited[src] = true;
+
+    do {
+        unsigned u = pq.top().first;
+        // float dis = pq.top().second;
+        pq.pop();
+
+        if (!visited[u]) {
+
+            vector<pair<int,float>> adjs;
+            g.get_adj_dis(u, adjs);
+
+
+            for (auto elem: adjs)  
+                if ((p[elem.first] == NULLV) || (g.get_dis(u, elem.first) + d[u] < d[elem.first]))   {
+                    d[elem.first] = g.get_dis(u, elem.first) + d[u];
+                    p[elem.first] = u;
+                    pq.push( make_pair(elem.first, d[elem.first]) ); 
+                }
+            
+        }
+
+        visited[u] = true;
+    } while (!pq.empty());
+
+    int current = des; 
+
+    cout << airports[current].iata;
+
+    do {
+
+        current = p[current];
+        cout << " -- "<< airports[current].iata;
+
+    } while ( current!=NULLV &&  current!=src);
+
+    cout<< " arrived"<<endl;
+    
+   
+
+}
