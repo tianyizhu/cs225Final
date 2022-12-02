@@ -1,5 +1,9 @@
 # cs225Final
-#to compile:
+
+## to compile:
+
 cd build
-add the data files
+
+add the .dat files
+
 g++ ../src/main.cpp ../src/io.cpp -o main
