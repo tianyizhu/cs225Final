@@ -1,6 +1,7 @@
 #pragma once
 
 #define NULLV 10000
+#define INF_DIS 384400
 
 #include <vector>
 #include <map>
@@ -128,18 +129,22 @@ class cmp
 //     return a.second < b.second;
 // }
 
-void dij(Graph g, unsigned src, unsigned des, vector<Airport>& airports)    {
+void dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
 
     priority_queue<pair<unsigned,float>, vector<pair<unsigned,float>>, cmp> pq;
 
     pq.push( make_pair(src, 0) );
 
-    float d[14110];
-    int p[14110];
-    bool visited[14110];
+    // float d[14110];
+    // int p[14110];
+    // bool visited[14110];
 
-    for (int i=0; i<14111; i++) {
-        d[i] = 1000000;
+    float* d = new float[g.size()];
+    int* p = new int[g.size()];
+    bool* visited = new bool[g.size()];
+
+    for (int i=0; i<g.size(); i++) {
+        d[i] = INF_DIS;
         visited[i] = false;
         p[i] = NULLV;
     }
@@ -170,19 +175,24 @@ void dij(Graph g, unsigned src, unsigned des, vector<Airport>& airports)    {
         visited[u] = true;
     } while (!pq.empty());
 
-    int current = des; 
 
-    cout << airports[current].iata;
+    int current = des; 
+    path = {current};
+    // cout << airports[current].iata;
 
     do {
 
         current = p[current];
-        cout << " -- "<< airports[current].iata;
+        path.push_back(current);
+        // cout << " -- "<< airports[current].iata;
 
     } while ( current!=NULLV &&  current!=src);
 
-    cout<< " arrived"<<endl;
-    
-   
+    reverse(path.begin(), path.end());
+    if (current == NULLV) path = {NULLV};
+    // return;
+    delete[] p;
+    delete[] d;
+    delete[] visited;
 
 }

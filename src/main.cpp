@@ -68,7 +68,17 @@ int main() {
     g.print_graph(src, src);
     g.print_graph(des, des);
 
-    dij(g, src, des, airports);
+    vector<int> path;
+    dij(g, src, des, path);
+    
+    cout<< "dij done!!"<<endl;
+        
+    if (path[0] == NULLV) cout<<"path not found"<<endl;
+                    else {
+        for (int id : path)
+            cout << " -- " << airports[id].iata ;
+        cout << "  arrived"<<endl;
+    }
 
     return 0;
 }
