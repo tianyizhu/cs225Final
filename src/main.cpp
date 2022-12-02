@@ -69,15 +69,16 @@ int main() {
     g.print_graph(des, des);
 
     vector<int> path;
-    dij(g, src, des, path);
+    int dis = dij(g, src, des, path);
     
     cout<< "dij done!!"<<endl;
-        
+
     if (path[0] == NULLV) cout<<"path not found"<<endl;
                     else {
         for (int id : path)
             cout << " -- " << airports[id].iata ;
         cout << "  arrived"<<endl;
+        cout << "total distance: " << dis << " km" << endl;
     }
 
     return 0;

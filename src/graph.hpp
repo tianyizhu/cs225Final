@@ -129,7 +129,7 @@ class cmp
 //     return a.second < b.second;
 // }
 
-void dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
+int dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
 
     priority_queue<pair<unsigned,float>, vector<pair<unsigned,float>>, cmp> pq;
 
@@ -164,8 +164,10 @@ void dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
 
 
             for (auto elem: adjs)  
-                if ((p[elem.first] == NULLV) || (g.get_dis(u, elem.first) + d[u] < d[elem.first]))   {
-                    d[elem.first] = g.get_dis(u, elem.first) + d[u];
+                // if ((p[elem.first] == NULLV) || (g.get_dis(u, elem.first) + d[u] < d[elem.first]))   {
+                //     d[elem.first] = g.get_dis(u, elem.first) + d[u];
+                if ((p[elem.first] == NULLV) || (elem.second + d[u] < d[elem.first]))   {
+                    d[elem.first] = elem.second + d[u];
                     p[elem.first] = u;
                     pq.push( make_pair(elem.first, d[elem.first]) ); 
                 }
@@ -189,10 +191,16 @@ void dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
     } while ( current!=NULLV &&  current!=src);
 
     reverse(path.begin(), path.end());
-    if (current == NULLV) path = {NULLV};
-    // return;
     delete[] p;
     delete[] d;
     delete[] visited;
 
+    if (current == NULLV) {
+        path = {NULLV};
+        return -1;
+    }
+    // return;
+
+    else return d[des];
+    
 }
