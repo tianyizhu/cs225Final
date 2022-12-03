@@ -129,7 +129,7 @@ class cmp
 //     return a.second > b.second;
 // }
 
-int dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
+float dij(Graph& g, unsigned src, unsigned des, vector<unsigned>& path)    {
 
     priority_queue<pair<unsigned,float>, vector<pair<unsigned,float>>, cmp> pq;
 
@@ -181,7 +181,7 @@ int dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
     } while (!pq.empty());
 
 
-    int current = des; 
+    unsigned current = des; 
     path = {current};
     // cout << airports[current].iata;
 
@@ -207,3 +207,77 @@ int dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
     else return d[des];
     
 }
+
+bool onPath(vector<unsigned>& path, unsigned v) {
+    for (auto elem: path)
+        if (v==elem) return true;
+    return false;
+}
+
+
+void DFS(Graph& g, unsigned root, unsigned des, vector<unsigned>& curPath, int maxDepth, float curDis, float& minDis, vector<unsigned>& minPath)    {
+    if (maxDepth == 0) {
+        if (root == des && curDis<minDis) {
+            minDis = curDis;
+            minPath = curPath;
+        }
+        return;
+    }
+
+    
+    vector<pair<int,float>> adjs;
+    g.get_adj_dis(root, adjs);
+    
+    for (auto elem: adjs)  {
+        unsigned v = elem.first;
+        float dis = elem.second;
+        if (!onPath(curPath, v))    {
+            curPath.push_back(v);
+
+            DFS(g, v, des, curPath, maxDepth-1,curDis+dis, minDis, minPath);
+
+            curPath.pop_back();
+     
+        }
+    }        
+
+}
+
+
+float IDDFS(Graph& g, unsigned src, unsigned des, vector<unsigned>& path, int maxHeight = 15)    {
+    
+    float minDis = INF_DIS;
+
+    for (int i=1; i<maxHeight; i++) {
+        path = {};
+        vector<unsigned> curPath = {src};
+
+
+        DFS(g, src, des, curPath, i,0, minDis, path);
+        if (minDis < INF_DIS) return minDis;
+    }
+
+    return -1;
+}
+
+
+
+// int DFS(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
+
+//     queue<unsigned> q;
+
+//     // int* p = new int[g.size()];
+//     bool* visited = new bool[g.size()];
+
+//     for (int i=0; i<g.size(); i++) {
+//         visited[i] = false;
+//         // p[i] = NULLV;
+//     }
+
+//     q.push(src);
+
+//     while (!q.empty())  {
+//         unsigned curr = q.front();
+//         q.pop();
+        
+

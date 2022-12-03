@@ -68,13 +68,26 @@ int main() {
     g.print_graph(src, src);
     g.print_graph(des, des);
 
-    vector<int> path;
-    int dis = dij(g, src, des, path);
-    
+    vector<unsigned> path;
+    float dis = dij(g, src, des, path);
     cout<< "dij done!!"<<endl;
 
     if (path[0] == NULLV) cout<<"path not found"<<endl;
                     else {
+        cout << "shortest distance path:"<<endl;
+        for (int id : path)
+            cout << " -- " << airports[id].iata ;
+        cout << "  arrived"<<endl;
+        cout << "total distance: " << dis << " km" << endl;
+    }
+    
+
+    dis = IDDFS(g, src, des, path);
+    cout<< "IDDFS done!!"<<endl;
+
+    if (dis < 0) cout<<"path not found"<<endl;
+                    else {
+        cout << "least transfer flights:"<<endl;
         for (int id : path)
             cout << " -- " << airports[id].iata ;
         cout << "  arrived"<<endl;
