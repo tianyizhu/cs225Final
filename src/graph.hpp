@@ -121,12 +121,12 @@ class cmp
 //     {reverse=revparam;}
   bool operator() (pair<unsigned,float> a, pair<unsigned,float> b) const
   {
-      return a.second < b.second;
+      return a.second > b.second;
   }
 };
 
 // bool cmp(pair<unsigned,float> a, pair<unsigned,float> b) {
-//     return a.second < b.second;
+//     return a.second > b.second;
 // }
 
 int dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
@@ -166,11 +166,14 @@ int dij(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
             for (auto elem: adjs)  
                 // if ((p[elem.first] == NULLV) || (g.get_dis(u, elem.first) + d[u] < d[elem.first]))   {
                 //     d[elem.first] = g.get_dis(u, elem.first) + d[u];
-                if ((p[elem.first] == NULLV) || (elem.second + d[u] < d[elem.first]))   {
-                    d[elem.first] = elem.second + d[u];
-                    p[elem.first] = u;
-                    pq.push( make_pair(elem.first, d[elem.first]) ); 
-                }
+                // if (!visited[elem.first]) {
+                    if ((p[elem.first] == NULLV) || (elem.second + d[u] < d[elem.first]))   {
+                        d[elem.first] = elem.second + d[u];
+                        p[elem.first] = u;
+                        pq.push( make_pair(elem.first, d[elem.first]) ); 
+                    }
+                
+                // }
             
         }
 
