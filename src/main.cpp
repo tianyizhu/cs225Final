@@ -1,15 +1,24 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <utility>  
+#include "../cs225/png.h"
+
 
 #include "graph.hpp"
 #include "geo.hpp"
 #include "io.h"
 
 using namespace std;
+using namespace cs225;
 
 int main() {
     // string file_route = "";
+    
+    pair<int,int> xy = eq_rect_proj(-88,40,3840,1920);
+
+    cout << xy.first << " , " << xy.second << endl;
+
     vector<Airport> airports; 
     vector<Route> routes;
     read_airports_dat("airports.dat", airports);
@@ -93,6 +102,8 @@ int main() {
         cout << "  arrived"<<endl;
         cout << "total distance: " << dis << " km" << endl;
     }
+
+    // PNG earth;
 
     return 0;
 }
