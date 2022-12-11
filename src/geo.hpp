@@ -1,5 +1,4 @@
 #pragma once
-
 #include<iostream>
 #include<cmath>
 #include <utility> 
@@ -36,6 +35,9 @@ pair<int, int> eq_rect_proj(double lo, double la, int w, int h, double lo0 = -18
     int x = (int)fx % w;
     int y = (int)fy % h;
 
+    // if (x<0) x+=w;
+    // if (y<0) y+=h;
+ 
     return make_pair(x,y);
 }
 
@@ -45,23 +47,42 @@ pair<double, double> invr_ortho_proj(int x, int y, int size, double lo0, double 
 
     if (size < 0) return make_pair(-1000,-1000);
     
-    x-+margin;
+    x-=margin;
     y-=margin;
+
+
+    if (x<0 || x>size || y<0 || y>size) return make_pair(-1000,-1000);
 
     x-=size/2;
     y-=size/2;
+    
+
+    y = -y;
+    
 
     lo0 = lo0/180*pi;
+    la0 = la0/180*pi;
+    
     
     double rou = sqrt(x*x + y*y);
-    double c = asin(rou / (size/2*sqrt(2)));
 
-    double lo = lo0 + atan( x*sin(c) / (rou*cos(c)*cos(lo0) - y*sin(c)*sin(lo0)) );
+    if (rou>size/2) return make_pair(-1000,-1000);
 
+    double c = asin(rou / (size/2));
+    // double c = asin(rou / (size*sqrt(2)));
+
+    double lo = lo0 + atan2( x*sin(c),(rou*cos(c)*cos(la0) - y*sin(c)*sin(la0)) );
     double la = asin(cos(c)*sin(la0)+y*sin(c)*cos(la0)/rou);
 
-    lo = lo/180*pi;
-    la = la/180*pi;
+    lo = lo*180/pi;
+    la = la*180/pi;
+    
+    if (lo>180) lo-=360;
+    if (lo<-180) lo+=360;
+
+    if (la>90) la-=180;
+    if (la<-90) la+=180;
+
 
     return make_pair(lo,la);
 
