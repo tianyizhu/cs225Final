@@ -2,6 +2,7 @@
 #include<iostream>
 #include<cmath>
 #include <utility> 
+#include <vector>
 
 #define pi 3.14159265359
 
@@ -87,3 +88,38 @@ pair<double, double> invr_ortho_proj(int x, int y, int size, double lo0, double 
     return make_pair(lo,la);
 
 }
+
+
+void get_waypoint(vector<pair<double, double>>& ret, double la0,double lo0, double la1, double lo1, double res = 1)   {
+    double d = cal_dis(la1, lo1, la0, lo0) / 6378;
+    la1 = la1/180*pi;
+    la0 = la0/180*pi;
+    lo1 = lo1/180*pi;
+    lo0 = lo0/180*pi;
+    res = res/180*pi;
+    ret = {};
+
+    double delta = 1/(d/res);
+
+    for (int i=1; i*delta < 1; i++) {
+        double f = i*delta;
+        
+        double a = sin((1-f)*d) / sin(d);
+        double b = sin(f*d) / sin(d);
+        double x = a*cos(la0) * cos(lo0) + b * cos(la1) * cos(lo1);
+        double y = a*cos(la0) * sin(lo0) + b * cos(la1) * sin(lo1);
+        double z = a*sin(la0) + b*sin(la1);
+        double la = atan2(z, sqrt(x*x + y*y))*180/pi;
+        double lo = atan2(y, x)*180/pi;
+
+
+        ret.push_back(make_pair(lo,la));
+    }
+
+}
+
+
+
+
+    
+

@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <utility>  
+#include "drawing.hpp"
 #include "../cs225/png.h"
 
 
@@ -107,14 +108,15 @@ int main() {
     string respond, filename;
     cout<< "generate the path animation? (Yes or No):";
     cin >> respond;
-    if (repond != "yes") return 0;
+    if (respond != "yes") return 0;
     cout<< "Enter the name of the output file:";
     cin >> filename;
 
     PNG source;
-    source.readFromFile("../political-world-map.png");
+    // source.readFromFile("../political-world-map.png");
+    source.readFromFile("../3840px-Blue_Marble_2002.png");
 
-    makeAnimation(airports, path);
+    makeAnimation(airports, path, source);
 
     cout << "animation done!" << endl;
 
