@@ -104,6 +104,19 @@ int main() {
     }
 
     // PNG earth;
+    string respond, filename;
+    cout<< "generate the path animation? (Yes or No):";
+    cin >> respond;
+    if (repond != "yes") return 0;
+    cout<< "Enter the name of the output file:";
+    cin >> filename;
+
+    PNG source;
+    source.readFromFile("../political-world-map.png");
+
+    makeAnimation(airports, path);
+
+    cout << "animation done!" << endl;
 
     return 0;
 }
