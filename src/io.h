@@ -1,5 +1,7 @@
 #pragma once
 
+#define AIRPORTNUM 14111
+
 #include <string>
 #include <vector>
 

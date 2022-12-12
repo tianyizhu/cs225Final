@@ -11,6 +11,10 @@ using namespace cs225;
 
 int main() {
 
+    pair<int,int> xy = eq_rect_proj(-88,40,3840,1920);
+
+    cout << xy.first << " , " << xy.second << endl;
+    
     PNG output;
 
     PNG source;

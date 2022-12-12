@@ -98,7 +98,7 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
 
         if (i==0)   {
 
-            draw(output, source, 400 ,lo1 , la1/2);
+            draw(output, source, size ,lo1 , la1/2);
 
             stringstream optname1;
             optname1 << "motion/" << idx << ".png";
@@ -141,7 +141,7 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
                 // cout << it.first << " , "<< it.second <<endl;
                 drawSquare(source, it.first, it.second, 0.4, white);
 
-                draw(output, source, 400 , it.first , it.second/2);
+                draw(output, source, size , it.first , it.second/2);
                 stringstream optname1;
                 optname1 << "motion/" << idx << ".png";
                 idx+=1;
@@ -152,7 +152,7 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
 
 
         drawSquare(source, lo1, la1, 0.6, red);
-        draw(output, source, 400 ,lo1 , la1/2);
+        draw(output, source, size ,lo1 , la1/2);
         
         stringstream optname;
         optname << "motion/" << idx << ".png";
@@ -162,7 +162,10 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
         lo0 = lo1;
         la0 = la1;
     }
+
+    
     source.writeToFile("output-source1.png");
+    // system("convert motion/*.png output1.gif");
 
 }
 

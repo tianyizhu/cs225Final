@@ -6,7 +6,7 @@ using namespace std;
 
 void read_airports_dat(const string filename, vector<Airport>& airports) {
     ifstream file(filename);
-    airports.resize(14111);
+    airports.resize(AIRPORTNUM);
 
     while(!file.eof()) {
         //regular read into a vector
