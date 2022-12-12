@@ -57,7 +57,7 @@ Then the path will be provided, and you can clearly see all the airports that in
 
 You can also choose to generate the path animation or not, and it will start generating the gif after you name the output file.
 
-For example, I want to find the shortest path from SHA to USH and save the gif in "Shortes.gif", this is what I should do after "./main" step by step:
+For example, I want to find the path from SHA to USH that has least transfer flights and save the gif in "Shortes.gif", this is what I should do after "./main" step by step: (Pick SHA and USH for example because the path will be complicated enough for us to see the differences between different preferences we choose above.)
 
 SHA
 
@@ -65,7 +65,7 @@ USH
 
 ——————————
 
-1
+2
 
 ——————————
 
@@ -74,6 +74,33 @@ yes
 ——————————
 
 Filename
+
+The interface will looks like:
+
+Welcome to plane path finder!!
+
+Enter your start and destination ariport code:
+
+SHA
+
+USH
+
+Choose the flight route you prefer:
+
+1) shortest distance onboard.  2) least transfer flights.  3) take a look at both.
+
+your choices:2
+
+least transfer flights:
+
+ -- "SHA" -- "PEK" -- "CDG" -- "EZE" -- "USH"  arrived
+ 
+total distance: 22740.9 km
+
+generate the path animation? (yes or no):yes
+
+Enter the name of the output file:Filename
+
 
 Then the gif file will be generated under the "build" folder. Please ignore the warning that similiar to:
 "WARNING: Call to cs225::PNG::getPixel(1645,4294966922) tries to access y=4294966922, which is outside of the image (image height: 961).
