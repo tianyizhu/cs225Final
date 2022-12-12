@@ -1,3 +1,18 @@
+# CS 225 Final Project
+Team members: 
+James Zhu (tianyi9@illinois.edu)
+Letian Hu (letianh3@illinois.edu)
+Yibai Wang (yibaiw2@illinois.edu)
+Zixiang Qu (zixiang7@illinois.edu)
+(All names sorted in alphabetical orders)
+
+
+## Presentation
+
+The short video of our presentation can be found at: ------------------------------
+
+## Final Purpose
+
 This project enables users to look for their most preferred path between two airports. The output may vary depends on user’s preference, the shortest path, or the path that requires the least connecting flights.
 
 ## Use of algorithms (Answer for our leading questions)
