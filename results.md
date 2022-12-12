@@ -75,6 +75,8 @@ yes
 
 Filename
 
+——————————
+
 The interface will looks like:
 
 Welcome to plane path finder!!
@@ -101,8 +103,10 @@ generate the path animation? (yes or no):yes
 
 Enter the name of the output file:Filename
 
+——————————
 
 Then the gif file will be generated under the "build" folder. Please ignore the warning that similiar to:
+
 "WARNING: Call to cs225::PNG::getPixel(1645,4294966922) tries to access y=4294966922, which is outside of the image (image height: 961).
        : Truncating y to 960"
 
