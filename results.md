@@ -30,7 +30,7 @@ The data is very well formatted, with each line includes nine data separated by 
 
 
 ## Generate weighted directed graph
-The second step is to generate a weighted directed graph. We constructed the graph by considering the airports as vertices and different routes to be the edges. We also input the distance between each two airports and record them as the weight of edges. All distances were calculated using mathematical formulas based on airports' latitudes and longitudes. After all that, we stored the graph into an adjecent matrix. The distance between each two airports is very accurate, as same as the official data we can find online (the distance between two airports will be calculated as the sum of distances between every adjacent airports alongt the path, if there exists any transfer flight). 
+The second step is to generate a weighted directed graph. We constructed the graph by considering the airports as vertices and different routes to be the edges. We also input the distance between each two airports and record them as the weight of edges. All distances were calculated using mathematical formulas based on airports' latitudes and longitudes. After all that, we stored the graph into an adjecent matrix. The distance between each two airports is very accurate, as same as the official data we can find online (the total distance between the start airport and destination will be calculated as the sum of distances between every adjacent airports alongt the path, if there exists any transfer flight). 
 
 ## Find the shortest path
 
