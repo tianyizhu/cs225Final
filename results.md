@@ -112,4 +112,4 @@ Then the gif file will be generated under the "build" folder. Please ignore the 
 
 And the plain map image version can be found at "output-source.png" in the "build" folder.
 
-We also included some fancy plane route examples in the "animation examples" fold in the root directory.
+We also included some fancy plane route examples in the "animation examples" folder.
