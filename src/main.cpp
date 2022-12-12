@@ -126,19 +126,20 @@ int main() {
 
     // part 6: animation
     // PNG earth;
-    cout<< "generate the path animation? (Yes or No):";
+    cout<< "generate the path animation? (yes or no):";
     cin >> respond;
     if (respond != "yes") return 0;
     cout<< "Enter the name of the output file:";
     cin >> filename;
 
     PNG source;
-    // source.readFromFile("../political-world-map.png");
-    source.readFromFile("../3840px-Blue_Marble_2002.png");
+    source.readFromFile("../political-world-map.png");
+    // source.readFromFile("../3840px-Blue_Marble_2002.png");
 
     makeAnimation(airports, path, source);
-
     cout << "animation done!" << endl;
+
+    system( ("convert motion/*.png "+filename+".gif").c_str() );
 
     return 0;
 }

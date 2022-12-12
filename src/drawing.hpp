@@ -163,9 +163,8 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
         la0 = la1;
     }
 
-    
-    source.writeToFile("output-source1.png");
-    // system("convert motion/*.png output1.gif");
+
+    source.writeToFile("output-source.png");
 
 }
 
