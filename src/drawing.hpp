@@ -164,7 +164,7 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
     }
 
 
-    source.writeToFile("output-source.png");
+    source.writeToFile("output-source1.png");
 
 }
 

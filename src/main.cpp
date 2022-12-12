@@ -55,7 +55,8 @@ int main() {
     string sString, dString;
     cin>>sString;
     cin>>dString;
-
+    transform(sString.begin(), sString.end(), sString.begin(), ::toupper);
+    transform(dString.begin(), dString.end(), dString.begin(), ::toupper);
     sString = '"'+sString+'"';
     dString = '"'+dString+'"';
     
@@ -133,8 +134,11 @@ int main() {
     cin >> filename;
 
     PNG source;
-    source.readFromFile("../political-world-map.png");
-    // source.readFromFile("../3840px-Blue_Marble_2002.png");
+    // source.readFromFile("../political-world-map.png");
+    // // source.readFromFile("../3840px-Blue_Marble_2002.png");
+    // if (!filesystem::exists("motion/")) {
+    //     mkdir("motion", 0700);
+    // }
 
     makeAnimation(airports, path, source);
     cout << "animation done!" << endl;
