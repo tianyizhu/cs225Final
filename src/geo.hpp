@@ -8,6 +8,7 @@
 
 using namespace std;
 
+// calculate the line distance (in km) between to geo coordinates 
 double cal_dis(double lat1, double long1, double lat2, double long2) {
     double dis;
     double earthR = 6378;
@@ -23,6 +24,7 @@ double cal_dis(double lat1, double long1, double lat2, double long2) {
     return dis;
 }
 
+//forward equirerectangular projection from a geo coordinate to pixel coordinate on a map
 pair<int, int> eq_rect_proj(double lo, double la, int w, int h, double lo0 = -180, double la0 = 90, double la1 = 0) {
     double dis;
     // la = la/180*pi;
@@ -42,6 +44,7 @@ pair<int, int> eq_rect_proj(double lo, double la, int w, int h, double lo0 = -18
     return make_pair(x,y);
 }
 
+//inverse spherical orthographic projection from flat coordinate of a pixel to a geo coordinate
 pair<double, double> invr_ortho_proj(int x, int y, int size, double lo0, double la0 = 0, int margin = 10) {
 
     size -= (margin*2);
@@ -51,19 +54,15 @@ pair<double, double> invr_ortho_proj(int x, int y, int size, double lo0, double 
     x-=margin;
     y-=margin;
 
-
     if (x<0 || x>size || y<0 || y>size) return make_pair(-1000,-1000);
 
     x-=size/2;
     y-=size/2;
     
-
     y = -y;
-    
 
     lo0 = lo0/180*pi;
     la0 = la0/180*pi;
-    
     
     double rou = sqrt(x*x + y*y);
 
@@ -89,7 +88,7 @@ pair<double, double> invr_ortho_proj(int x, int y, int size, double lo0, double 
 
 }
 
-
+// get the vector of waypoints along two points on earth 
 void get_waypoint(vector<pair<double, double>>& ret, double la0,double lo0, double la1, double lo1, double res = 1)   {
     double d = cal_dis(la1, lo1, la0, lo0) / 6378;
     la1 = la1/180*pi;
@@ -117,9 +116,3 @@ void get_waypoint(vector<pair<double, double>>& ret, double la0,double lo0, doub
     }
 
 }
-
-
-
-
-    
-

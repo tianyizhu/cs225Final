@@ -134,15 +134,17 @@ int main() {
     cin >> filename;
 
     PNG source;
+    // you can choose which base map you want to use here:
     // source.readFromFile("../political-world-map.png");
-    // // source.readFromFile("../3840px-Blue_Marble_2002.png");
-    // if (!filesystem::exists("motion/")) {
-    //     mkdir("motion", 0700);
-    // }
+    source.readFromFile("../3840px-Blue_Marble_2002.png");
+
+    //if motion folder doesn't exist, add it. If exist, there will just be a warning:
+    system("mkdir motion");
 
     makeAnimation(airports, path, source);
     cout << "animation done!" << endl;
 
+    //combine the pngs of a walking of the path into a gif:
     system( ("convert motion/*.png "+filename+".gif").c_str() );
 
     return 0;

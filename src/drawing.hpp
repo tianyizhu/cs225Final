@@ -9,8 +9,8 @@
 using namespace std;
 using namespace cs225;
 
-
-
+// helper function to draw a square on specific geo coordinates on a plain map. 
+// note: the size is in degree!
 void drawSquare(PNG& source, double lo, double la, double size, HSLAPixel& color) {
 
     int sW = source.width();
@@ -44,8 +44,7 @@ void drawSquare(PNG& source, double lo, double la, double size, HSLAPixel& color
 
 
 
-
-
+//project a plain (equirerectangular projected) map to a spherical orthographic map
 void draw(PNG& output, PNG& source, int size, double lo0, double la0)   {
 
     //get size of source:
@@ -80,6 +79,7 @@ void draw(PNG& output, PNG& source, int size, double lo0, double la0)   {
 }
 
 
+// make an animation of the spinning earth with the plane going throuhg the path
 void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source, int size = 360)   {
     
     PNG output;
@@ -106,36 +106,6 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
             output.writeToFile(optname1.str());
         }
         else {
-            // double dislo = lo1 - lo0;
-            // if (dislo > 180) dislo = dislo-360;
-            // if (dislo < -180) dislo = dislo+360;
-
-            // double dis = sqrt(dislo*dislo+(la1-la0)*(la1-la0));
-
-            // double dlo = dislo/dis*2;
-            // double dla = (la1-la0)/dis*2;
-
-            // double lo = lo0 + dlo;
-            // double la = la0 + dla;
-            // int count = 0;
-            // do{
-                
-            //     drawSquare(source, lo, la, 0.2, grey);
-            //     // draw(output, source, 400 ,lo , la/1.5);
-            //     // stringstream optname;
-            //     // optname << "motion/" << idx << ".png";
-            //     // idx+=1;
-            //     // output.writeToFile(optname.str());
-
-            //     lo+=dlo;
-            //     la+=dla;
-            //     if (lo > 180) lo = lo-360;
-            //     if (lo < -180) lo = lo+360;
-
-            //     cout << lo << " , " << la << endl;
-            //     count ++;
-
-            // }   while (cal_dis( la1, lo1, la, lo) > 100 && count<500);
             get_waypoint(waypoints, la0,lo0, la1, lo1);
             for (auto it : waypoints)   {
                 // cout << it.first << " , "<< it.second <<endl;
@@ -150,7 +120,6 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
             
         }
 
-
         drawSquare(source, lo1, la1, 0.6, red);
         draw(output, source, size ,lo1 , la1/2);
         
@@ -163,9 +132,5 @@ void makeAnimation(vector<Airport>& airports, vector<unsigned>& path, PNG source
         la0 = la1;
     }
 
-
     source.writeToFile("output-source1.png");
-
 }
-
-

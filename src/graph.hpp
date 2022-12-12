@@ -73,7 +73,6 @@ class Graph {
     void print_graph(unsigned from = 0, unsigned to = -1) {
 
         // to--;
-
         if (to<from || to > adjList.size())
             to = adjList.size()-1;
         
@@ -110,7 +109,6 @@ class Graph {
 };
 
 
-
 class cmp
 {
 //   bool reverse;
@@ -129,6 +127,7 @@ class cmp
 //     return a.second > b.second;
 // }
 
+// dijkstra's algorithm
 float dij(Graph& g, unsigned src, unsigned des, vector<unsigned>& path)    {
 
     priority_queue<pair<unsigned,float>, vector<pair<unsigned,float>>, cmp> pq;
@@ -180,7 +179,6 @@ float dij(Graph& g, unsigned src, unsigned des, vector<unsigned>& path)    {
         visited[u] = true;
     } while (!pq.empty());
 
-
     unsigned current = des; 
     path = {current};
     // cout << airports[current].iata;
@@ -204,9 +202,9 @@ float dij(Graph& g, unsigned src, unsigned des, vector<unsigned>& path)    {
     }
     // return;
 
-    else return d[des];
-    
+    else return d[des]; 
 }
+
 
 bool onPath(vector<unsigned>& path, unsigned v) {
     for (auto elem: path)
@@ -258,26 +256,4 @@ float IDDFS(Graph& g, unsigned src, unsigned des, vector<unsigned>& path, int ma
     }
 
     return -1;
-}
-
-
-
-// int DFS(Graph& g, unsigned src, unsigned des, vector<int>& path)    {
-
-//     queue<unsigned> q;
-
-//     // int* p = new int[g.size()];
-//     bool* visited = new bool[g.size()];
-
-//     for (int i=0; i<g.size(); i++) {
-//         visited[i] = false;
-//         // p[i] = NULLV;
-//     }
-
-//     q.push(src);
-
-//     while (!q.empty())  {
-//         unsigned curr = q.front();
-//         q.pop();
-        
-
+}   
