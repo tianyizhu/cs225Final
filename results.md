@@ -1,9 +1,14 @@
 # CS 225 Final Project
 Team members: 
+
 James Zhu (tianyi9@illinois.edu)
+
 Letian Hu (letianh3@illinois.edu)
+
 Yibai Wang (yibaiw2@illinois.edu)
+
 Zixiang Qu (zixiang7@illinois.edu)
+
 (All names sorted in alphabetical orders)
 
 
@@ -55,12 +60,19 @@ You can also choose to generate the path animation or not, and it will start gen
 For example, I want to find the shortest path from SHA to USH and save the gif in "Shortes.gif", this is what I should do after "./main" step by step:
 
 SHA
+
 USH
+
 ——————————
+
 1
+
 ——————————
+
 yes
+
 ——————————
+
 Filename
 
 Then the gif file will be generated under the "build" folder. Please ignore the warning that similiar to:
