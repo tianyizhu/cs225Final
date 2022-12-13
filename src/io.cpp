@@ -15,6 +15,8 @@ void read_airports_dat(const string filename, vector<Airport>& airports) {
         getline(file, line);
         SplitString(line, ',', temp);
 
+        if (temp.size() != 14) continue;
+
         Airport airport;
         airport.name = temp[1];
         airport.city = temp[2];
@@ -28,6 +30,8 @@ void read_airports_dat(const string filename, vector<Airport>& airports) {
     }
     file.close();
 }
+
+
 void read_routes_dat(const string filename, vector<Route>& routes) {
         ifstream file(filename);
 
@@ -38,7 +42,8 @@ void read_routes_dat(const string filename, vector<Route>& routes) {
         getline(file, line);
         SplitString(line, ',', temp);
 
-        
+
+        if (temp.size() != 9) continue;  
 
         Route route;
         // cout << temp[3] << "   "<<temp[5] << endl;
@@ -59,15 +64,6 @@ void read_routes_dat(const string filename, vector<Route>& routes) {
         routes.push_back(route);
     }
     file.close();
-}
-
-bool is_airport_iata(string s) {
-    return true;
-}
-
-
-bool is_number(string s) {
-    return true;
 }
 
 int SplitString(const std::string & str1, char sep, std::vector<std::string> &fields) {
