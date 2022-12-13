@@ -60,6 +60,8 @@ Then the path will be provided, and you can clearly see all the airports that in
 
 You can also choose to generate the path animation or not, and it will start generating the gif after you name the output file.
 
+## Illustration
+
 For example, I want to find the path from SHA to USH that has least transfer flights and save the gif in "Shortes.gif", this is what I should do after "./main" step by step: (Pick SHA and USH for example because the path will be complicated enough for us to see the differences between different preferences we choose above.)
 
 SHA
@@ -80,7 +82,7 @@ Filename
 
 ——————————
 
-The interface will looks like:
+## The interface will looks like:
 
 Welcome to plane path finder!!
 
@@ -106,7 +108,7 @@ generate the path animation? (yes or no):yes
 
 Enter the name of the output file:Filename
 
-——————————
+## After that:
 
 Then the gif file will be generated under the "build" folder. Please ignore the warning that similiar to:
 
