@@ -14,7 +14,7 @@ Zixiang Qu (zixiang7@illinois.edu)
 
 ## Presentation
 
-The short video of our presentation can be found at: ------------------------------
+The short video of our presentation can be found at: https://mediaspace.illinois.edu/media/t/1_3c4nfvdi
 
 ## Final Purpose
 
