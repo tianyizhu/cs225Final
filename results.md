@@ -50,7 +50,10 @@ We test the correctness of each algorithm by using the codes we wrote in test_dr
 
 We built a search interface that can be used in the terminal:
 
-By entering start and destination airport code along with a enter after each of them, three different preferences will be provided:
+By entering start and destination airport code along with a enter after each of them('sha' and 'SHA' both works, the system will transfer it for you atuomatically), 
+
+three different preferences will be provided:
+
 1) shortest distance onboard.  2) least transfer flights.  3) take a look at both.
 
 Then the path will be provided, and you can clearly see all the airports that involved in this path, also the total distance (Kilometers) for this trip.
