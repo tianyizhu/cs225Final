@@ -16,6 +16,8 @@ Zixiang Qu (zixiang7@illinois.edu)
 
 The short video of our presentation can be found at: https://mediaspace.illinois.edu/media/t/1_3c4nfvdi
 
+The gif file that illustrated in the presentation was not very smooth because of the recording quality. You can always run the project and choose to generate the path animation to see the better version if you want, it will be generated in the "build" folder. 
+
 ## Final Purpose
 
 This project enables users to look for their most preferred path between two airports. The output may vary depends on user’s preference, the shortest path, or the path that requires the least connecting flights.
