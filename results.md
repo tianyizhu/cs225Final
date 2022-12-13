@@ -16,7 +16,7 @@ Zixiang Qu (zixiang7@illinois.edu)
 
 The short video of our presentation can be found at: https://mediaspace.illinois.edu/media/t/1_3c4nfvdi
 
-P.S. The gif file that illustrated in the presentation was not very smooth because of the recording quality. You can always run the project and choose to generate the path animation to see the better version if you want, it will be generated in the "build" folder. 
+P.S. The gif file that illustrated in the presentation was not very smooth because of the recording quality. Be sure to check them out in the "animation examples" folder from the repository!
 
 ## Final Purpose
 
