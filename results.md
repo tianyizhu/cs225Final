@@ -115,8 +115,9 @@ Then the gif file will be generated under the "build" folder. Please ignore the 
 "WARNING: Call to cs225::PNG::getPixel(1645,4294966922) tries to access y=4294966922, which is outside of the image (image height: 961).
        : Truncating y to 960"
 
-And the plain map image version can be found at "output-source.png" in the "build" folder.
+
 
 ## Attachment
 
+The plain map image version can be found at "output-source.png" in the "build" folder.
 We also included some fancy plane route examples in the "animation examples" folder.
